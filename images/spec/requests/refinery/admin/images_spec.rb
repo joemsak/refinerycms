@@ -6,7 +6,7 @@ module Refinery
 
     context "when no images" do
       it "invites to add one" do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         page.should have_content(%q{There are no images yet. Click "Add new image" to add your first image.})
       end
     end
@@ -19,7 +19,7 @@ module Refinery
 
     context "new/create" do
       it "uploads image", :js => true do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         click_link "Add new image"
 
         page.should have_selector('iframe#dialog_iframe')

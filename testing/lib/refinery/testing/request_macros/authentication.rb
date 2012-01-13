@@ -12,7 +12,7 @@ module Refinery
               :email => "refinerycms@refinerycms.com"
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => refinery_user.username
             fill_in "Password", :with => password
@@ -29,7 +29,7 @@ module Refinery
               :password_confirmation => password
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => user.username
             fill_in "Password", :with => password

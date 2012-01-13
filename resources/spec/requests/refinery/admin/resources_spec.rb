@@ -7,7 +7,7 @@ module Refinery
 
       context "when no files" do
         it "invites to upload file" do
-          visit refinery_admin_resources_path
+          visit refinery.admin_resources_path
           page.should have_content(%q{There are no files yet. Click "Upload new file" to add your first file.})
         end
       end

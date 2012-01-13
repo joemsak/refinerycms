@@ -10,7 +10,7 @@ module Refinery
         before(:each) { Refinery::Page.destroy_all }
 
         it "invites to create one" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
           page.should have_content(%q{There are no pages yet. Click "Add new page" to add your first page.})
         end
       end
