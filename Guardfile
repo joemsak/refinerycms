@@ -1,4 +1,4 @@
-engines = [ 
+engines = [
   'authentication',
   'core',
   'images',
@@ -14,13 +14,13 @@ guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => '
   watch(%r{^config/initializers/.+\.rb$})
   watch('spec/spec_helper.rb')
   watch(%r{^spec/support/.+\.rb$})
-  
+
   engines.each do |engine|
     watch(%r{^#{engine}/spec/support/.+\.rb$})
   end
 end
 
-guard 'rspec', :version => 2, :spec_paths => ['authentication/spec', 'core/spec', 'images/spec', 'pages/spec', 'resources/spec', 'settings/spec'], :cli => "--format Fuubar --color --drb" do
+guard 'rspec', :version => 2, :spec_paths => ['authentication/spec', 'core/spec', 'images/spec', 'pages/spec', 'resources/spec', 'settings/spec'], :cli => "--format nested --color --drb --fail-fast", :run_all_on_start => true, :run_all_after_pass => false do
   engines.each do |engine|
     watch(%r{^#{engine}/spec/.+_spec\.rb$})
     watch(%r{^#{engine}/app/(.+)\.rb$})                           { |m| "#{engine}/spec/#{m[1]}_spec.rb" }
