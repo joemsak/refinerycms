@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class Page < ActiveRecord::Base
+class Page
   has_many :resource_associations, :as => :association
   has_many :resources, :through => :resource_associations
 end
