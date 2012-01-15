@@ -9,24 +9,25 @@ describe ResourceAssociation do
   let!(:resource) do
     Resource.new(:id => 1, :file => File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__)))
   end
+
   let!(:page) { Page.create!(:title => 'A page') }
 
-  it "references a Resource" do
+  before do
     subject.resource = resource
+    subject.association = page
     subject.save
-    subject.reload.resource_id.should eq(1)
+    subject.reload
+  end
+
+  it "references a Resource" do
+    subject.resource_id.should eq(1)
   end
 
   it "polymorphically references anything else" do
-    subject.association = page
-    subject.save
     page.resource_associations.should eq([subject])
   end
 
   it "acts as a delegate to the resource" do
-    subject.resource = resource
-    subject.association = page
-    subject.save
     page.resources.should eq([resource])
   end
 end
